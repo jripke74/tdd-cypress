@@ -5,20 +5,22 @@ describe('Text box with max characters', () => {
     cy.visit('http://localhost:3000/example-3');
 
     cy.get('span')
+      .eg(1)
       .invoke('text')
       .should('equal', '15');
 
     cy.get('input').type('hello');
 
-
     cy.get('span')
+      .eq(1)
       .invoke('text')
       .should('equal', '10');
 
-    cy.get('input').type(' my friend');
-
+    cy.get('input').eg(1)
+      .type(' my friend');
 
     cy.get('span')
+      .eq(1)
       .invoke('text')
       .should('equal', '0');
   });
